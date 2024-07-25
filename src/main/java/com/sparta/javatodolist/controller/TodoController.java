@@ -2,6 +2,7 @@ package com.sparta.javatodolist.controller;
 
 import com.sparta.javatodolist.dto.CreateTodoRequest;
 import com.sparta.javatodolist.dto.TodoResponse;
+import com.sparta.javatodolist.dto.UpdateTodoRequest;
 import com.sparta.javatodolist.service.TodoService;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +31,11 @@ public class TodoController {
     @GetMapping("/{id}")
     public TodoResponse getTodo(@PathVariable Long id) {
         return todoService.getTodo(id);
+    }
+
+    @PutMapping("/{id}")
+    public TodoResponse updateTodo(@PathVariable Long id, @RequestBody UpdateTodoRequest updateTodoRequest) {
+        return todoService.updateTodo(id, updateTodoRequest);
     }
 
 
