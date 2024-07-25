@@ -7,6 +7,8 @@ import com.sparta.javatodolist.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class TodoService {
     private final TodoRepository todoRepository;
@@ -17,5 +19,9 @@ public class TodoService {
         Todo todo = createTodoRequest.toEntity();
         Todo savedTodo = todoRepository.save(todo);
         return new TodoResponse(savedTodo);
+    }
+
+    public List<TodoResponse> getTodoList() {
+        return todoRepository.findAllByOrderByCreatedAtDesc().stream().map(TodoResponse::new).toList();
     }
 }
