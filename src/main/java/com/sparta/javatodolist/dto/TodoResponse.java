@@ -4,6 +4,7 @@ import com.sparta.javatodolist.entity.Todo;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Getter
 public class TodoResponse {
@@ -15,6 +16,16 @@ public class TodoResponse {
     private LocalDateTime modifiedAt;
 
     public TodoResponse(Todo todo) {
+        this.id = todo.getId();
+        this.title = todo.getTitle();
+        this.content = todo.getContent();
+        this.asignee = todo.getAssignee();
+        this.createdAt = todo.getCreatedAt();
+        this.modifiedAt = todo.getModifiedAt();
+    }
+
+    public TodoResponse(Optional<Todo> foundTodo) {
+        Todo todo = foundTodo.orElseThrow();
         this.id = todo.getId();
         this.title = todo.getTitle();
         this.content = todo.getContent();
