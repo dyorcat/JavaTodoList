@@ -1,7 +1,6 @@
 package com.sparta.javatodolist.service;
 
 import com.sparta.javatodolist.dto.CreateTodoRequest;
-import com.sparta.javatodolist.dto.DeleteTodoRequest;
 import com.sparta.javatodolist.dto.TodoResponse;
 import com.sparta.javatodolist.dto.UpdateTodoRequest;
 import com.sparta.javatodolist.entity.Todo;

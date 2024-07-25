@@ -4,8 +4,6 @@ import com.sparta.javatodolist.entity.Todo;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
-
 @Getter
 public class TodoResponse {
     private Long id;

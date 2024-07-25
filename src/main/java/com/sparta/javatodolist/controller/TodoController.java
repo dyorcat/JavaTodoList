@@ -1,14 +1,13 @@
 package com.sparta.javatodolist.controller;
 
 import com.sparta.javatodolist.dto.CreateTodoRequest;
-import com.sparta.javatodolist.dto.DeleteTodoRequest;
 import com.sparta.javatodolist.dto.TodoResponse;
 import com.sparta.javatodolist.dto.UpdateTodoRequest;
 import com.sparta.javatodolist.service.TodoService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/todos")
@@ -21,7 +20,7 @@ public class TodoController {
     }
 
     @PostMapping()
-    public TodoResponse createTodo(@RequestBody CreateTodoRequest createTodoRequest) {
+    public TodoResponse createTodo(@Valid @RequestBody CreateTodoRequest createTodoRequest) {
         return todoService.createTodo(createTodoRequest);
     }
 
