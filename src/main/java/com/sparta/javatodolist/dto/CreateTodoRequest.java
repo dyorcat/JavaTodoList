@@ -26,7 +26,6 @@ public class CreateTodoRequest {
         todo.setContent(this.content);
         todo.setAssignee(this.assignee);
         todo.setPassword(this.password);
-        todo.setCreatedAt(LocalDateTime.now()); // 작성일 설정
         return todo;
     }
 
