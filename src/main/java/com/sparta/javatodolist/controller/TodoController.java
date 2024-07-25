@@ -1,6 +1,7 @@
 package com.sparta.javatodolist.controller;
 
 import com.sparta.javatodolist.dto.CreateTodoRequest;
+import com.sparta.javatodolist.dto.DeleteTodoRequest;
 import com.sparta.javatodolist.dto.TodoResponse;
 import com.sparta.javatodolist.dto.UpdateTodoRequest;
 import com.sparta.javatodolist.service.TodoService;
@@ -36,6 +37,11 @@ public class TodoController {
     @PutMapping("/{id}")
     public TodoResponse updateTodo(@PathVariable Long id, @RequestBody UpdateTodoRequest updateTodoRequest) {
         return todoService.updateTodo(id, updateTodoRequest);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteTodo(@PathVariable Long id, @RequestParam String password) {
+        todoService.deleteTodo(id, password);
     }
 
 

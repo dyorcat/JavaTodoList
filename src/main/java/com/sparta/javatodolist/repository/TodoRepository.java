@@ -9,8 +9,6 @@ import java.util.Optional;
 public interface TodoRepository extends JpaRepository<Todo, Long> {
 
     List<Todo> findAllByOrderByCreatedAtDesc();
-
-    Optional<Todo> findById(Long id);
     List<Todo> findAllByAssignee(String assignee);
     List<Todo> findAllByContentContainsOrderByModifiedAtDesc(String keyword);
 }

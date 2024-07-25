@@ -1,6 +1,7 @@
 package com.sparta.javatodolist.service;
 
 import com.sparta.javatodolist.dto.CreateTodoRequest;
+import com.sparta.javatodolist.dto.DeleteTodoRequest;
 import com.sparta.javatodolist.dto.TodoResponse;
 import com.sparta.javatodolist.dto.UpdateTodoRequest;
 import com.sparta.javatodolist.entity.Todo;
@@ -53,6 +54,17 @@ public class TodoService {
         existingTodo = updateTodoRequest.toEntity(existingTodo);
         Todo updatedTodo = todoRepository.save(existingTodo);
         return new TodoResponse(updatedTodo);
+    }
+
+    public void deleteTodo(Long id, String password) {
+        Todo existingTodo = todoRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "해당하는 할 일이 없습니다."));
+        if (!existingTodo.getPassword().equals(password)) {
+            logger.warn("비밀번호 검증 실패: 요청된 ID: {}, 제공된 비밀번호: {}, 저장된 비밀번호: {}",
+                    id, password, existingTodo.getPassword());
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "비밀번호가 일치하지 않습니다.");
+        }
+        todoRepository.delete(existingTodo);
     }
 }
 

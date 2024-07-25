@@ -23,14 +23,4 @@ public class TodoResponse {
         this.createdAt = todo.getCreatedAt();
         this.modifiedAt = todo.getModifiedAt();
     }
-
-    public TodoResponse(Optional<Todo> foundTodo) {
-        Todo todo = foundTodo.orElseThrow();
-        this.id = todo.getId();
-        this.title = todo.getTitle();
-        this.content = todo.getContent();
-        this.asignee = todo.getAssignee();
-        this.createdAt = todo.getCreatedAt();
-        this.modifiedAt = todo.getModifiedAt();
-    }
 }
