@@ -19,13 +19,10 @@ public class Todo extends Timestamped {
     private Long id;
     @Column(name = "title", nullable = false)
     private String title;
-    @Column(name = "content", nullable = false, length = 500)
+    @Column(name = "content", nullable = false)
     private String content;
     @Column(name = "assignee", nullable = false)
     private String assignee;
     @Column(name = "password", nullable = false)
     private String password;
-    @CreatedDate
-    @Column(updatable = false)
-    private LocalDateTime createdAt;
 }
