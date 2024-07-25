@@ -1,14 +1,18 @@
-package com.sparta.javatodolist.entity;
+package com.sparta.javatodolist.domain.todo.entity;
 
+import com.sparta.javatodolist.domain.comment.entity.Comment;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
-@Table(name = "todo")
+@Table(name = "todos")
 @NoArgsConstructor
 public class Todo extends Timestamped {
     @Id
@@ -26,4 +30,8 @@ public class Todo extends Timestamped {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "todo_id")
+    private List<Comment> commentList = new ArrayList<>();
 }

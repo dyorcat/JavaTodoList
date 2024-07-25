@@ -1,10 +1,10 @@
-package com.sparta.javatodolist.service;
+package com.sparta.javatodolist.domain.todo.service;
 
-import com.sparta.javatodolist.dto.CreateTodoRequest;
-import com.sparta.javatodolist.dto.TodoResponse;
-import com.sparta.javatodolist.dto.UpdateTodoRequest;
-import com.sparta.javatodolist.entity.Todo;
-import com.sparta.javatodolist.repository.TodoRepository;
+import com.sparta.javatodolist.domain.todo.dto.CreateTodoRequest;
+import com.sparta.javatodolist.domain.todo.dto.TodoResponse;
+import com.sparta.javatodolist.domain.todo.dto.UpdateTodoRequest;
+import com.sparta.javatodolist.domain.todo.entity.Todo;
+import com.sparta.javatodolist.domain.todo.repository.TodoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +50,11 @@ public class TodoService {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "비밀번호가 일치하지 않습니다.");
         }
 
-        existingTodo = updateTodoRequest.toEntity(existingTodo);
+        existingTodo.setTitle(updateTodoRequest.getTitle());
+        existingTodo.setContent(updateTodoRequest.getContent());
+        existingTodo.setAssignee(updateTodoRequest.getAssignee());
+
+        // 수정된 엔티티 저장
         Todo updatedTodo = todoRepository.save(existingTodo);
         return new TodoResponse(updatedTodo);
     }

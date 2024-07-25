@@ -1,4 +1,4 @@
-package com.sparta.javatodolist.entity;
+package com.sparta.javatodolist.domain.todo.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -1,9 +1,9 @@
-package com.sparta.javatodolist.controller;
+package com.sparta.javatodolist.domain.todo.controller;
 
-import com.sparta.javatodolist.dto.CreateTodoRequest;
-import com.sparta.javatodolist.dto.TodoResponse;
-import com.sparta.javatodolist.dto.UpdateTodoRequest;
-import com.sparta.javatodolist.service.TodoService;
+import com.sparta.javatodolist.domain.todo.dto.CreateTodoRequest;
+import com.sparta.javatodolist.domain.todo.dto.TodoResponse;
+import com.sparta.javatodolist.domain.todo.dto.UpdateTodoRequest;
+import com.sparta.javatodolist.domain.todo.service.TodoService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
