@@ -27,13 +27,4 @@ public class CreateTodoRequest {
     @NotBlank(message = "비밀번호는 필수 입력값입니다. ")
     private String password;
 
-    public Todo toEntity() {
-        Todo todo = new Todo();
-        todo.setTitle(this.title);
-        todo.setContent(this.content);
-        todo.setAssignee(this.assignee);
-        todo.setPassword(this.password);
-        return todo;
-    }
-
 }
