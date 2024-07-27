@@ -14,18 +14,18 @@ public class TodoResponse {
     private Long id;
     private String title;
     private String content;
-    private String asignee;
+    private String assignee; // 오타 수정
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
-    private List<Comment> commentList;
 
-    public TodoResponse(Todo todo) {
-        this.id = todo.getId();
-        this.title = todo.getTitle();
-        this.content = todo.getContent();
-        this.asignee = todo.getAssignee();
-        this.createdAt = todo.getCreatedAt();
-        this.modifiedAt = todo.getModifiedAt();
-        this.commentList = todo.getCommentList();
+    public static TodoResponse toResponse(Todo todo) {
+        TodoResponse response = new TodoResponse();
+        response.setId(todo.getId());
+        response.setTitle(todo.getTitle());
+        response.setContent(todo.getContent());
+        response.setAssignee(todo.getAssignee());
+        response.setCreatedAt(todo.getCreatedAt());
+        response.setModifiedAt(todo.getModifiedAt());
+        return response;
     }
 }
