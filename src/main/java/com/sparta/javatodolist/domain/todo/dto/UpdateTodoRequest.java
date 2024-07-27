@@ -12,6 +12,7 @@ public class UpdateTodoRequest {
     private String content;
     private String assignee;
     private String password;
+
 }
 
 
