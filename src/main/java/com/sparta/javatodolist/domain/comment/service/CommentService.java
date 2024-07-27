@@ -34,9 +34,12 @@ public class CommentService {
             log.error("댓글 내용이 비어 있습니다.");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "댓글 내용은 필수 입력 값입니다.");
         }
-        Comment comment = createCommentRequest.toEntity(todoId, userId);
+        Comment comment = new Comment();
+        comment.setContent(createCommentRequest.getContent());
+        comment.setUserId(userId);
+        comment.setTodoId(todoId);
         Comment savedComment = commentRepository.save(comment);
-        return new CommentResponse(savedComment);
+        return CommentResponse.toResponse(savedComment);
     }
 
 
@@ -58,7 +61,7 @@ public class CommentService {
 
         comment.setContent((updateCommentRequest.getContent()));
         Comment updatedComment = commentRepository.save(comment);
-        return new CommentResponse(updatedComment);
+        return CommentResponse.toResponse(updatedComment);
     }
 
     public void deleteComment(Long todoId, Long commentId, Long userId) {
@@ -78,7 +81,6 @@ public class CommentService {
                     userId, comment.getUserId());
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "댓글 작성자가 일치하지 않습니다.");
         }
-
         commentRepository.delete(comment);
     }
 }
