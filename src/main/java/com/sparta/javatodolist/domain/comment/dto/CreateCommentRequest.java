@@ -9,11 +9,4 @@ import lombok.Setter;
 public class CreateCommentRequest {
     private String content;
 
-    public Comment toEntity(Long userId, Long todoId) {
-        Comment comment = new Comment();
-        comment.setContent(this.content);
-        comment.setUserId(userId);
-        comment.setTodoId(todoId);
-        return comment;
-    }
 }
