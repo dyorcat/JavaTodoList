@@ -6,6 +6,7 @@ import com.sparta.javatodolist.domain.todo.dto.TodoResponse;
 import com.sparta.javatodolist.domain.todo.dto.UpdateTodoRequest;
 import com.sparta.javatodolist.domain.todo.entity.Todo;
 import com.sparta.javatodolist.domain.todo.repository.TodoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+@Slf4j
 @Component
 public class TodoService {
     private static final Logger logger = LoggerFactory.getLogger(TodoService.class);
